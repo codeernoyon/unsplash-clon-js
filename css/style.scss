@@ -6,6 +6,8 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Raleway", sans-serif;
+  overflow-x: hidden;
+  position: relative;
 }
 * {
   margin: 0;
@@ -346,7 +348,7 @@ button {
     align-items: center;
     position: absolute;
     bottom: 1%;
-    padding: 0 1rem;
+    padding: 0 2rem;
     font-size: 0.8rem;
     color: var(--main-text-color);
     .hero_bottom_left {
@@ -366,6 +368,382 @@ button {
           img {
             width: 200px;
           }
+        }
+      }
+    }
+  }
+}
+
+///////======Gallery=====/////
+.gallery {
+  width: 100%;
+  padding: 3rem 1rem;
+  display: none;
+  .warper {
+    width: 100%;
+    columns: 3;
+    column-gap: 20px;
+    background: #fff;
+    .item {
+      width: 100%;
+      margin-bottom: 20px;
+      position: relative;
+      overflow: hidden;
+      .item_top {
+        padding: 0 1rem;
+        width: 100%;
+        display: none;
+        justify-content: space-between;
+        align-content: center;
+        position: absolute;
+        top: 1rem;
+        z-index: 2;
+        opacity: 0;
+        transition: all 0.3s ease-in-out;
+
+        .rigth {
+          display: flex;
+          .love {
+            height: 2rem;
+            width: 2.5rem;
+            background: rgb(241, 239, 239);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 5px;
+            margin-right: 0.5rem;
+            cursor: pointer;
+            i {
+              color: rgba(75, 75, 75, 0.829);
+            }
+            &:hover {
+              background: rgb(255, 255, 255);
+              i {
+                color: rgba(36, 35, 35, 0.966);
+              }
+            }
+          }
+          .plus {
+            height: 2rem;
+            width: 2.5rem;
+            background: rgb(241, 239, 239);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 2;
+            i {
+              color: rgba(75, 75, 75, 0.829);
+            }
+            &:hover {
+              background: rgb(255, 255, 255);
+              i {
+                color: rgba(36, 35, 35, 0.966);
+              }
+            }
+          }
+        }
+      }
+      .item_bottom {
+        width: 100%;
+        padding: 0 1rem;
+        position: absolute;
+        bottom: 1.2rem;
+        left: 0;
+        display: none;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 2;
+        color: #fff;
+        opacity: 0;
+        transition: all 0.3s ease-in-out;
+        .item_bottom_left {
+          display: flex;
+          .img {
+            img {
+              border-radius: 50%;
+            }
+          }
+          .item_bottom_text {
+            position: relative;
+            .name {
+              display: block;
+              width: 200px;
+            }
+            .title {
+              font-size: 0.8rem;
+              svg {
+                position: relative;
+                top: 2px;
+                background: #fff;
+                border-radius: 50%;
+                stroke: rgb(211, 211, 211);
+              }
+            }
+          }
+        }
+        .rigth {
+          .download {
+            height: 2rem;
+            width: 2.5rem;
+            background: rgb(241, 239, 239);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 5px;
+            margin-right: 0.5rem;
+            cursor: pointer;
+            i {
+              color: rgba(75, 75, 75, 0.829);
+            }
+            &:hover {
+              background: rgb(255, 255, 255);
+              i {
+                color: rgba(36, 35, 35, 0.966);
+              }
+            }
+          }
+        }
+      }
+      .img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: relative;
+      }
+      &::before {
+        content: "";
+        position: absolute;
+        height: 99%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        background: rgba(0, 0, 0, 0.3);
+        z-index: -1;
+        transition: all 0.3s ease-in-out;
+      }
+      &:hover {
+        .item_top {
+          display: flex;
+          opacity: 1;
+        }
+        .item_bottom {
+          display: flex;
+          opacity: 1;
+        }
+        &::before {
+          z-index: 1;
+        }
+      }
+    }
+  }
+}
+///////======popUp=====/////
+.pop_up {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background: reba(0, 0, 0, 0.3);
+  background: rgb(105, 105, 105);
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  // display: none;
+  .close_popUp {
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    color: rgba(44, 44, 44, 0.9);
+    z-index: 100;
+  }
+  .left_arrow_popUp {
+    position: absolute;
+    top: 50%;
+    left: 30px;
+    transform: translate(-0px, -50%);
+    z-index: 100;
+    color: rgba(49, 49, 49, 0.9);
+  }
+  .right_arrow_popUp {
+    position: absolute;
+    top: 50%;
+    right: 30px;
+    transform: translate(-0px, -50%);
+    z-index: 100;
+    color: rgba(49, 49, 49, 0.9);
+  }
+  .popUp_warper {
+    height: 98%;
+    width: 90%;
+    background: rgb(255, 255, 255);
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+    .popUp_header {
+      position: fixed;
+      position: relative;
+      width: 100%;
+      height: 4rem;
+      background: rgb(255, 255, 255);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 1rem;
+      .popUp_header_left {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .popUp_header_left_img {
+          margin-right: 1rem;
+          border-radius: 50%;
+          overflow: hidden;
+          cursor: pointer;
+        }
+        .popUp_header_left_text {
+          cursor: pointer;
+          .title {
+            font-size: 0.8rem;
+            color: dodgerblue;
+            margin-top: 0.2rem;
+            svg {
+              position: relative;
+              top: 2px;
+              fill: dodgerblue;
+            }
+          }
+        }
+      }
+      .popUp_header_right {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .love,
+        .plus {
+          height: 2rem;
+          width: 3rem;
+          border-radius: 5px;
+          margin: 0 0.2rem;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border: 0.1rem solid rgba(184, 184, 184, 0.8);
+          color: var(--main-text-color);
+          cursor: pointer;
+          &:hover {
+            border: 0.1rem solid rgba(110, 110, 110, 0.9);
+            color: rgba(110, 110, 110, 0.9);
+          }
+        }
+        .download {
+          height: 100%;
+          margin-left: 0.5rem;
+          .text {
+            padding: 0.5rem 1rem;
+            border-radius: 5px 0px 0px 5px;
+            border: 0.1rem solid rgba(184, 184, 184, 0.8);
+            color: var(--main-text-color);
+            cursor: pointer;
+            &:hover {
+              border: 0.1rem solid rgba(110, 110, 110, 0.9);
+              color: rgba(110, 110, 110, 0.9);
+            }
+          }
+          .download_icon {
+            position: relative;
+            left: -5px;
+            padding: 0.5rem 1rem;
+            border-radius: 0px 5px 5px 0px;
+            border: 0.1rem solid rgba(184, 184, 184, 0.8);
+            color: var(--main-text-color);
+            cursor: pointer;
+            &:hover {
+              border: 0.1rem solid rgba(110, 110, 110, 0.9);
+              color: rgba(110, 110, 110, 0.9);
+            }
+          }
+          .download_popUp {
+            position: absolute;
+            top: 65px;
+            right: 25px;
+            background-color: rgb(10, 12, 15);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 5px;
+            transform: scale(0);
+            // display: none;
+            transition: all 1s cubic-bezier(0.29, -0.69, 0.54, 1.62) linear !important;
+
+            .download_popUp_warper {
+              position: relative;
+              display: flex;
+              flex-direction: column;
+              align-items: flex-end;
+              padding: 1rem;
+              color: var(--main-text-color);
+              z-index: 2;
+              .small_text,
+              .medium_text,
+              .large_text {
+                margin-bottom: 0.5rem;
+                color: #fff;
+                &:hover {
+                  color: var(--main-text-color);
+                }
+              }
+              .original_text {
+                width: 100%;
+                padding: 0.7rem 0;
+                border-top: 0.1rem solid rgba(201, 201, 201, 0.511);
+                color: #fff;
+                &:hover {
+                  color: var(--main-text-color);
+                }
+              }
+              .size {
+                color: var(--main-text-color);
+              }
+              &::before {
+                content: "";
+                position: absolute;
+                height: 1rem;
+                width: 1rem;
+                top: -5px;
+                right: 12px;
+                background-color: rgb(10, 12, 15);
+                transform: rotate(45deg);
+                z-index: -2;
+              }
+            }
+          }
+          .download_popUp.active {
+            display: block;
+            transform: scale(1);
+          }
+        }
+      }
+    }
+    .popUp_body {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      .popUp_body_warper {
+        position: relative;
+        top: 20px;
+        height: 80%;
+        width: 35%;
+        border-radius: 10px;
+        overflow: hidden;
+        img {
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
         }
       }
     }
