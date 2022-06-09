@@ -1,0 +1,25 @@
+#header {
+  padding: 1rem 0 1rem 1rem;
+}
+.searchTitle {
+  height: 150px;
+  position: relative;
+  .titleSearch {
+    position: absolute;
+    bottom: 5%;
+    left: 0;
+    padding-left: 3%;
+    font-size: 2rem;
+    text-transform: capitalize;
+    font-weight: 600;
+  }
+}
+.gallery {
+  padding: 2rem 0;
+}
+.pop_up {
+  #prv,
+  #next {
+    cursor: pointer;
+  }
+}

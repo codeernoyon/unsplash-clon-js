@@ -56,7 +56,7 @@ button {
     }
     .search {
       position: relative;
-      margin-right: 1rem;
+      width: 53%;
       .search_btn {
         position: absolute;
         left: 0.8rem;
@@ -75,7 +75,7 @@ button {
         }
         .search_input {
           padding: 0 2.5rem;
-          width: 43rem;
+          width: 100%;
           height: 2.6rem;
           border-radius: 100px;
           border: 0.1rem solid rgb(255, 255, 255);
@@ -274,7 +274,8 @@ button {
   height: 110vh;
   width: 100%;
   background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-    url("../img/background.jpg") center center no-repeat;
+    url("https://images.unsplash.com/photo-1653511442060-00c7b10827c4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1vZi10aGUtZGF5fHx8fGVufDB8fHx8&auto=format%2Ccompress&fit=crop&w=1000&h=1000")
+      center center no-repeat;
   background-size: cover;
   display: flex;
   justify-content: center;
@@ -378,7 +379,7 @@ button {
 .gallery {
   width: 100%;
   padding: 3rem 1rem;
-  display: none;
+  // display: none;
   .warper {
     width: 100%;
     columns: 3;
@@ -389,6 +390,7 @@ button {
       margin-bottom: 20px;
       position: relative;
       overflow: hidden;
+      cursor: pointer;
       .item_top {
         padding: 0 1rem;
         width: 100%;
@@ -423,6 +425,12 @@ button {
               }
             }
           }
+          .love.active {
+            background-color: rgb(243, 43, 93);
+            i {
+              color: #fff;
+            }
+          }
           .plus {
             height: 2rem;
             width: 2.5rem;
@@ -449,7 +457,7 @@ button {
         width: 100%;
         padding: 0 1rem;
         position: absolute;
-        bottom: 1.2rem;
+        bottom: 1.3rem;
         left: 0;
         display: none;
         justify-content: space-between;
@@ -488,14 +496,17 @@ button {
             height: 2rem;
             width: 2.5rem;
             background: rgb(241, 239, 239);
-            display: flex;
-            justify-content: center;
-            align-items: center;
+
             border-radius: 5px;
             margin-right: 0.5rem;
             cursor: pointer;
-            i {
-              color: rgba(75, 75, 75, 0.829);
+            a {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              i {
+                color: rgba(75, 75, 75, 0.829);
+              }
             }
             &:hover {
               background: rgb(255, 255, 255);
@@ -512,25 +523,23 @@ button {
         object-fit: cover;
         position: relative;
       }
-      &::before {
-        content: "";
-        position: absolute;
-        height: 99%;
-        width: 100%;
-        top: 0;
-        left: 0;
-        background: rgba(0, 0, 0, 0.3);
-        z-index: -1;
-        transition: all 0.3s ease-in-out;
-      }
+
       &:hover {
         .item_top {
           display: flex;
           opacity: 1;
+          background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0));
+          position: absolute;
+          top: 0;
+          padding: 1rem 1rem;
         }
         .item_bottom {
           display: flex;
           opacity: 1;
+          position: absolute;
+          bottom: 0;
+          padding: 1rem 1rem;
+          background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3));
         }
         &::before {
           z-index: 1;
@@ -552,13 +561,14 @@ button {
   align-items: center;
   top: 0;
   left: 0;
-  // display: none;
+  display: none;
   .close_popUp {
     position: absolute;
     top: 20px;
     left: 30px;
-    color: rgba(44, 44, 44, 0.9);
+    color: rgb(230, 230, 230);
     z-index: 100;
+    cursor: pointer;
   }
   .left_arrow_popUp {
     position: absolute;
@@ -567,8 +577,10 @@ button {
     transform: translate(-0px, -50%);
     z-index: 100;
     color: rgba(49, 49, 49, 0.9);
+    cursor: pointer;
   }
   .right_arrow_popUp {
+    cursor: pointer;
     position: absolute;
     top: 50%;
     right: 30px;
@@ -636,6 +648,14 @@ button {
           &:hover {
             border: 0.1rem solid rgba(110, 110, 110, 0.9);
             color: rgba(110, 110, 110, 0.9);
+          }
+        }
+        .love.active {
+          background-color: rgb(243, 43, 93);
+          border: 0.1rem solid rgba(255, 255, 255, 1);
+
+          i {
+            color: #fff;
           }
         }
         .download {
@@ -748,4 +768,10 @@ button {
       }
     }
   }
+}
+.pop_up.hide {
+  display: none;
+}
+.pop_up.show {
+  display: flex;
 }

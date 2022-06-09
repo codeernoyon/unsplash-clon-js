@@ -10,7 +10,7 @@
   <body>
     <header id="header">
       <nav class="nav">
-        <a class="logo" title="Home — Unsplash" href="#"
+        <a class="logo" title="Home — Unsplash" href="index.html"
           ><svg
             width="32"
             height="32"
@@ -25,7 +25,7 @@
           </svg>
         </a>
         <div class="search">
-          <form class="ssearch_form" method="submit">
+          <form action="./pages/search.html">
             <button class="search_btn" type="submit">
               <svg
                 width="23px"
@@ -42,13 +42,15 @@
             </button>
             <div class="search_area">
               <input
+                autocomplete="off"
+                name="search"
                 class="search_input"
-                type="search"
+                type="text"
                 placeholder="Search free high-resolution photos"
               />
             </div>
             <div class="file_choose" id="popover-visual-search-form-nav">
-              <button role="button" class="in_btn">
+              <button type="submit" class="in_btn">
                 <svg
                   width="23"
                   height="23"
@@ -244,10 +246,10 @@
         <i class="fa-solid fa-xmark"></i>
       </div>
       <div class="left_arrow_popUp">
-        <i class="fa-solid fa-arrow-left"></i>
+        <i class="fa-solid fa-arrow-left" id="prv"></i>
       </div>
       <div class="right_arrow_popUp">
-        <i class="fa-solid fa-arrow-right"></i>
+        <i class="fa-solid fa-arrow-right" id="next"></i>
       </div>
       <div class="popUp_warper">
         <div class="popUp_header">
@@ -256,6 +258,7 @@
               <img
                 src="./img/profile-1653477423424-2860ccb143aaimage.avif"
                 alt="photo"
+                id="profile_img"
               />
             </div>
             <div class="popUp_header_left_text">
@@ -282,35 +285,44 @@
             </div>
           </div>
           <div class="popUp_header_right">
-            <div class="love"><i class="fa-solid fa-heart"></i></div>
+            <div class="love fevList">
+              <i class="fa-solid fa-heart"></i>
+            </div>
             <div class="plus"><i class="fa-solid fa-plus"></i></div>
             <div class="download">
-              <span class="text">download</span>
+              <a href="" download id="popUpDownload" target="_blank">
+                <span class="text">download</span>
+              </a>
               <span class="download_icon"
                 ><i class="fa-solid fa-angle-down"></i
               ></span>
               <div class="download_popUp">
                 <div class="download_popUp_warper">
                   <div class="small_text">
-                    <a href="#">
+                    <a href="" download id="smallDownload" target="_blank">
                       <span class="download_popUp_text">small</span>
                       <span class="size">(640 x 425)</span>
                     </a>
                   </div>
                   <div class="medium_text">
-                    <a href="#">
+                    <a href="" download="" id="mediumDownload" target="_blank">
                       <span class="download_popUp_text">medium</span>
                       <span class="size">(1920 x 1277)</span>
                     </a>
                   </div>
                   <div class="large_text">
-                    <a href="#">
+                    <a href="" download="" id="largeDownload" target="_blank">
                       <span class="download_popUp_text">large</span>
                       <span class="size">(2400 x 1596)</span>
                     </a>
                   </div>
                   <div class="original_text">
-                    <a href="#">
+                    <a
+                      href=""
+                      download=""
+                      target="_blank"
+                      id="originalDownload"
+                    >
                       <span class="download_popUp_text">Original Size</span>
                       <span class="size">(5849 x 3892)</span>
                     </a>
@@ -322,10 +334,7 @@
         </div>
         <div class="popUp_body">
           <div class="popUp_body_warper">
-            <img
-              src="./img/aaron-burden-tLmI5FqS9i4-unsplash.jpg"
-              alt="image"
-            />
+            <img id="popupImg" src="" alt="image" />
           </div>
         </div>
         <div class="popUp_footer">
@@ -356,7 +365,7 @@
           </div>
           <div class="hero_search">
             <div class="search">
-              <form class="ssearch_form" method="submit">
+              <form action="./pages/search.html">
                 <button class="search_btn" type="submit">
                   <svg
                     width="23px"
@@ -373,13 +382,15 @@
                 </button>
                 <div class="search_area">
                   <input
+                    autocomplete="off"
+                    name="search"
                     class="search_input"
-                    type="search"
+                    type="text"
                     placeholder="Search free high-resolution photos"
                   />
                 </div>
                 <div class="file_choose" id="popover-visual-search-form-nav">
-                  <button role="button" class="in_btn">
+                  <button type="submit" class="in_btn">
                     <svg
                       width="23"
                       height="23"
