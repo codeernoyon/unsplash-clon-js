@@ -9,7 +9,9 @@ const popUp =document.querySelector('.pop_up');
     downloadIcon.addEventListener('click', () => classAdd(downloadPopUP));
     popUPlove.addEventListener('click', () => classAdd(popUPlove));
     close_popUp.addEventListener('click', () =>{
-      popUp.classList.add('hide')
-      popUp.classList.remove('show')
+      popUp.classList.add('hide');
+      popUp.classList.remove('show');
+      downloadPopUP.classList.remove('active');
+
     })
     

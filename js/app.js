@@ -27,6 +27,7 @@ const searchImages = async  () => {
 }
   ////////create imgs /////////
   const createImg =async (data) => {
+
     let imgs = ` `;
   await data.forEach((item) => {
         imgs += `
@@ -74,14 +75,13 @@ const searchImages = async  () => {
                 </div>
               </div>
             </div>
-            <img class="img" src="${item.urls.regular}" alt="" />
+            <img class="galleryImg" src="${item.urls.regular}" alt="" />
           </div>
        `
        
-
        warper.innerHTML = imgs;
-    console.log(data);
-      const images =document.querySelectorAll('.img');
+
+      const images =document.querySelectorAll('.galleryImg');
       images.forEach((img, index) => {
         img.addEventListener('click', () => {
           popUp.classList.add("show");
@@ -91,10 +91,11 @@ const searchImages = async  () => {
           /////popup img/////
           popUpImg(img);
           
-          ////popUP Download////
+          ////popUp profile Img Download////
           popUpProfileImg(currentImg);
-
-          ////popUP Download////
+          ////popUp user profile////
+          popUpUserProfile(currentImg)
+          // ////popUP Download////
           popUpDownload(currentImg);
 
           ///////slide img/////
@@ -102,11 +103,10 @@ const searchImages = async  () => {
         })
       })
     })
-
     
     //////add loves////////
     const loves =document.querySelectorAll('#galleryLove');
-    loves.forEach((love) => {
+   await loves.forEach((love) => {
       love.addEventListener('click', () => {
         love.classList.toggle("active")
       })
@@ -125,6 +125,16 @@ const searchImages = async  () => {
     popupProfileImg.src = `${allData[currentImg].user.profile_image.small}`;
     popUpUserName.innerHTML = `${allData[currentImg].user.name}`;
   }
+  /////////pop up user profile/////////
+  let popUpUserProfileLink = document.querySelectorAll('#popUp_header_left_a');
+
+  const popUpUserProfile = async (currentImg)=>{
+  await  popUpUserProfileLink.forEach((item) => {
+      item.addEventListener('click', () => {
+        item.href = `${allData[currentImg].user.links.html}`
+      })
+    })
+  }
     ////////popUP Download/////////
   let popUpDownloadImg = document.querySelectorAll('#popUpDownload');
   let smallDownload = document.querySelectorAll('#smallDownload');
@@ -140,8 +150,8 @@ const searchImages = async  () => {
   let large = `${allData[currentImg].urls.full}`;
   let original = `${allData[currentImg].urls.raw}`;
 
-let createForEach = (ele, links) => {
-  ele.forEach((item) => {
+let createForEach = async (ele, links) => {
+  await ele.forEach((item) => {
     item.href = `${links}`;
   })
 }
@@ -151,11 +161,6 @@ createForEach(smallDownload, small);
 createForEach(mediumDownload, medium);
 createForEach(largeDownload, large);
 createForEach(originalDownload, original);
-  // popUpDownloadImg.href = ;
-  // smallDownload.href = `${allData[currentImg].urls.regular}`;
-  // mediumDownload.href = `${allData[currentImg].urls.regular}`;
-  // largeDownload.href = `${allData[currentImg].urls.regular}`;
-  // originalDownload.href = `${allData[currentImg].urls.regular}`;
 }
   /////////image slide/////////
   const prv = document.querySelector('#prv');
@@ -165,15 +170,19 @@ createForEach(originalDownload, original);
     prv.addEventListener('click', () => {
       if(currentImg > 0){
         currentImg--;
-        let count = allData[currentImg - 1].urls.regular;
+        let count = allData[currentImg].urls.regular;
         popupImg.src = `${count}`;
+        popUpDownload(currentImg)
+
       }
     })
     next.addEventListener('click', () => {
       if(currentImg < allData.length){
         currentImg++;
-       let count = allData[currentImg - 1].urls.regular;
+       let count = allData[currentImg].urls.regular;
        popupImg.src = `${count}`;
+       popUpDownload(currentImg)
+
       }
     })
   }

@@ -8,6 +8,9 @@ body {
   font-family: "Raleway", sans-serif;
   overflow-x: hidden;
   position: relative;
+  &::-webkit-scrollbar {
+    width: 0;
+  }
 }
 * {
   margin: 0;
@@ -520,7 +523,7 @@ button {
           }
         }
       }
-      .img {
+      .galleryImg {
         width: 100%;
         height: 100%;
         object-fit: cover;
@@ -554,7 +557,7 @@ button {
 ///////======popUp=====/////
 .pop_up {
   position: fixed;
-  height: 100%;
+  height: 100vh;
   width: 100%;
   background: reba(0, 0, 0, 0.3);
   background: rgb(105, 105, 105);
@@ -623,25 +626,27 @@ button {
       align-items: center;
       padding: 0 1rem;
       .popUp_header_left {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        .popUp_header_left_img {
-          margin-right: 1rem;
-          border-radius: 50%;
-          overflow: hidden;
-          cursor: pointer;
-        }
-        .popUp_header_left_text {
-          cursor: pointer;
-          .title {
-            font-size: 0.8rem;
-            color: dodgerblue;
-            margin-top: 0.2rem;
-            svg {
-              position: relative;
-              top: 2px;
-              fill: dodgerblue;
+        a {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          .popUp_header_left_img {
+            margin-right: 1rem;
+            border-radius: 50%;
+            overflow: hidden;
+            cursor: pointer;
+          }
+          .popUp_header_left_text {
+            cursor: pointer;
+            .title {
+              font-size: 0.8rem;
+              color: dodgerblue;
+              margin-top: 0.2rem;
+              svg {
+                position: relative;
+                top: 2px;
+                fill: dodgerblue;
+              }
             }
           }
         }
