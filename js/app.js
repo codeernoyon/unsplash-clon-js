@@ -1,7 +1,7 @@
 ////////////apis//////////
 const searchPeram = location.search.split('=').pop();
 const api_accesKey = `fTCd0sVXOLT0uQYq2b5vV_Bq8Eaw3y26LUq-PEf5lUM`;
-const api_Url = `https://api.unsplash.com/photos/random/?client_id=${api_accesKey}&count=50`;
+const api_Url = `https://api.unsplash.com/photos?client_id=${api_accesKey}&count=50`;
 const search_api_Url = `https://api.unsplash.com/search/photos?client_id=${api_accesKey}&query=${searchPeram}&per_page=50`;
 
 //////elements///////
@@ -28,7 +28,7 @@ const searchImages = async  () => {
   ////////create imgs /////////
   const createImg =async (data) => {
     let imgs = ` `;
-  await data.forEach((item, index) => {
+  await data.forEach((item) => {
         imgs += `
        <div class="item">
        <div class="item_top">
@@ -80,7 +80,7 @@ const searchImages = async  () => {
        
 
        warper.innerHTML = imgs;
-
+    console.log(data);
       const images =document.querySelectorAll('.img');
       images.forEach((img, index) => {
         img.addEventListener('click', () => {
@@ -91,6 +91,9 @@ const searchImages = async  () => {
           /////popup img/////
           popUpImg(img);
           
+          ////popUP Download////
+          popUpProfileImg(currentImg);
+
           ////popUP Download////
           popUpDownload(currentImg);
 
@@ -114,18 +117,45 @@ const searchImages = async  () => {
   const popUpImg = (data)=>{
     popupImg.src = `${data.src}`;
     }
+
+  /////////pop up profile imgs/////////
+  let popupProfileImg = document.querySelector('#profile_img');
+  let popUpUserName = document.querySelector('#popUpUserName');
+  const popUpProfileImg = (currentImg)=>{
+    popupProfileImg.src = `${allData[currentImg].user.profile_image.small}`;
+    popUpUserName.innerHTML = `${allData[currentImg].user.name}`;
+  }
     ////////popUP Download/////////
-  let popUpDownloadImg = document.querySelector('#popUpDownload');
-  let smallDownload = document.querySelector('#smallDownload');
-  let mediumDownload = document.querySelector('#mediumDownload');
-  let largeDownload = document.querySelector('#largeDownload');
-  let originalDownload = document.querySelector('#originalDownload');
-let popUpDownload = (currentImg) => {
-  popUpDownloadImg.href = `${allData[currentImg].links.download}`;
-  smallDownload.href = `${allData[currentImg].urls.regular}`;
-  mediumDownload.href = `${allData[currentImg].urls.regular}`;
-  largeDownload.href = `${allData[currentImg].urls.regular}`;
-  originalDownload.href = `${allData[currentImg].urls.regular}`;
+  let popUpDownloadImg = document.querySelectorAll('#popUpDownload');
+  let smallDownload = document.querySelectorAll('#smallDownload');
+  let mediumDownload = document.querySelectorAll('#mediumDownload');
+  let largeDownload = document.querySelectorAll('#largeDownload');
+  let originalDownload = document.querySelectorAll('#originalDownload');
+
+  let popUpDownload = (currentImg) => {
+  ////element for each function//////
+  let download = `${allData[currentImg].links.download}`;
+  let small = `${allData[currentImg].urls.small_s3}`;
+  let medium = `${allData[currentImg].urls.small}`;
+  let large = `${allData[currentImg].urls.full}`;
+  let original = `${allData[currentImg].urls.raw}`;
+
+let createForEach = (ele, links) => {
+  ele.forEach((item) => {
+    item.href = `${links}`;
+  })
+}
+
+createForEach(popUpDownloadImg, download);
+createForEach(smallDownload, small);
+createForEach(mediumDownload, medium);
+createForEach(largeDownload, large);
+createForEach(originalDownload, original);
+  // popUpDownloadImg.href = ;
+  // smallDownload.href = `${allData[currentImg].urls.regular}`;
+  // mediumDownload.href = `${allData[currentImg].urls.regular}`;
+  // largeDownload.href = `${allData[currentImg].urls.regular}`;
+  // originalDownload.href = `${allData[currentImg].urls.regular}`;
 }
   /////////image slide/////////
   const prv = document.querySelector('#prv');
