@@ -1,7 +1,7 @@
 ////////////apis//////////
 const searchPeram = location.search.split('=').pop();
 const api_accesKey = `fTCd0sVXOLT0uQYq2b5vV_Bq8Eaw3y26LUq-PEf5lUM`;
-const api_Url = `https://api.unsplash.com/photos/random?client_id=${api_accesKey}&count=50`;
+const api_Url = `https://api.unsplash.com/photos?client_id=${api_accesKey}&count=50`;
 const search_api_Url = `https://api.unsplash.com/search/photos?client_id=${api_accesKey}&query=${searchPeram}&per_page=50`;
 
 //////elements///////
@@ -27,7 +27,6 @@ const searchImages = async  () => {
 }
   ////////create imgs /////////
   const createImg =async (data) => {
-
     let imgs = ` `;
   await data.forEach((item) => {
         imgs += `
@@ -40,16 +39,16 @@ const searchImages = async  () => {
               </div>
             </div>
             <div class="item_bottom">
-              <div class="item_bottom_left">
+              <div class="item_bottom_left" >
                 <div class="img">
                   <img
                   class='itemImg'
-                    src="./img/profile-1653477423424-2860ccb143aaimage.avif"
+                    src="${item.user.profile_image.small}"
                     alt=""
                   />
                 </div>
                 <div class="item_bottom_text">
-                  <div class="name"><span>Vivien Wauthier</span></div>
+                  <div class="name"><span>${item.user.name}</span></div>
                   <div class="title">
                     <span>Available for hire</span>
                     <svg
@@ -187,8 +186,12 @@ createForEach(originalDownload, original);
     })
   }
  
-  
-
+  /////////header slider//////
+  const headerLeftArrow = document.querySelector('.header_left_arrow');
+  const headerRightArrow = document.querySelector('.header_right_arrow');
+  const rightUl = document.querySelector('.right_ul');
+  headerRightArrow.addEventListener('click', () => {
+})
   //////update car text//////////
 const carText = document.querySelector('.titleSearch');
   if(searchPeram == ''){
