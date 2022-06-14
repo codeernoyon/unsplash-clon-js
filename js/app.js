@@ -50,7 +50,7 @@ const searchImages = async  () => {
                 <div class="item_bottom_text">
                   <div class="name"><span>${item.user.name}</span></div>
                   <div class="title">
-                    <span>Available for hire</span>
+                   <a href="${item.user.links.html}" target="_blank"><span>Available for hire</span></a>
                     <svg
                       width="15"
                       height="15"
