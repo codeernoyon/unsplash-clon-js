@@ -186,12 +186,7 @@ createForEach(originalDownload, original);
     })
   }
  
-  /////////header slider//////
-  const headerLeftArrow = document.querySelector('.header_left_arrow');
-  const headerRightArrow = document.querySelector('.header_right_arrow');
-  const rightUl = document.querySelector('.right_ul');
-  headerRightArrow.addEventListener('click', () => {
-})
+
   //////update car text//////////
 const carText = document.querySelector('.titleSearch');
   if(searchPeram == ''){
